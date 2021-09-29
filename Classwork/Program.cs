@@ -7,7 +7,7 @@ namespace Classwork
         public enum Card { Шестерка, Семерка, Восьмерка, Девятка, Десятка, Валет, Дама, Король, Туз};   //для Task4
         static void Main(string[] args)
         {
-            /*//Task 1
+            //Task 1
             Console.WriteLine("Task 1\nВведите трехзначное число:");
         Input:
             int digit3 = Convert.ToInt32(Console.ReadLine());
@@ -28,7 +28,7 @@ namespace Classwork
             float b = Convert.ToSingle(Console.ReadLine());
             Console.WriteLine("Введите d (диаметр головы Васи в см):");
             float d = Convert.ToSingle(Console.ReadLine());
-            if ((d < (a - 2)) && (d < (b - 2))) //1+1см зазор с каждой стороны
+            if ((d <= (a - 2)) && (d <= (b - 2))) //1+1см зазор с каждой стороны
             {
                 Console.WriteLine("Вася пролезет");
             }
@@ -65,7 +65,7 @@ namespace Classwork
                 default:
                     Console.WriteLine("Некорректное значение");
                     break;
-            }*/
+            }
             //Task 4
             try
             {
@@ -82,7 +82,7 @@ namespace Classwork
             {
                 Console.WriteLine("Ошибка " + ex.Message);
             }
-            /*//Task 5
+            //Task 5
             Console.WriteLine("\nTask 5");
             int R = 6370;
             for (int h = 1; h<=10; h++)
@@ -96,28 +96,69 @@ namespace Classwork
             for (int i=1;i<10;i++)
             {
                 Console.WriteLine("{0} * {1} = {2}",n,i,n*i);
-            }*/
+            }
             //Task 7
             try
             {
-                Console.WriteLine("\nTask 7\nВведите первое число последовательности");
-                int num = Convert.ToInt32(Console.ReadLine()), count = 0, sum=0;
-                while (num >= 0)
+                Console.WriteLine("\nTask 7\nВведите первое число последовательности, признак окончание последовательности — отрицательное число");
+                int num7 = Convert.ToInt32(Console.ReadLine()), count7 = 0, sum7=0;
+                while (num7 >= 0)
                 {
-                    count++;
-                    sum += num;
+                    count7++;
+                    sum7 += num7;
                     Console.WriteLine("Введите следующее число");
-                    num = Convert.ToInt32(Console.ReadLine());
+                    num7 = Convert.ToInt32(Console.ReadLine());
 
                 }
-                Console.WriteLine($"Среднее арифметическое: {(double)sum/count}");
+                Console.WriteLine($"Среднее арифметическое: {(double)sum7/count7}");
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ошибка"+ex.Message);
             }
             //TAsk 8
-
+            Console.WriteLine("\nTask 8 (последовательность из 10 чисел)\nВведите первое число последовательности");
+            int n1 = Convert.ToInt32(Console.ReadLine()), n2;
+            for(int i =2; i<=10;i++)
+            {
+                Console.WriteLine("Введите следующее число");
+                n2 = Convert.ToInt32(Console.ReadLine());
+                if(n1>=n2)
+                {
+                    Console.WriteLine("Последовательность неупорядоченная, {0}-ое число первым нарушает возрастание",i);
+                    break;
+                }
+                if (i == 10)
+                {
+                    Console.WriteLine("Упорядоченная последовательность");
+                }
+            }
+            //Task 9
+            Console.WriteLine("\nTask 9\nВведите первое число последовательности, признак окончание последовательности — 0");
+            int num = Convert.ToInt32(Console.ReadLine()), count = 1, sum = 0;
+            while (num != 0)
+            {
+                if(count % 3 == 0)
+                {
+                    sum += num;
+                }
+                Console.WriteLine("Введите следующее число");
+                num = Convert.ToInt32(Console.ReadLine());
+                count++;
+            }
+            Console.WriteLine("Сумма элементов последовательности, номера позиций которых кратны 3: {0}",sum);
+            //Task 10
+            Console.WriteLine("\nTask 10\nВведите первое число последовательности, признак окончание последовательности — 0");
+            sum = 0;
+        Input10:    //Метка для goto
+            num = Convert.ToInt32(Console.ReadLine());
+            sum += num;
+            if (num!=0)
+            {
+                Console.WriteLine("Введите следующее число:");
+                goto Input10;
+            }
+            Console.WriteLine("Сумма последовательности "+sum);
             Console.ReadKey();
         }
     }
