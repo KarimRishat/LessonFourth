@@ -4,9 +4,10 @@ namespace Classwork
 {
     class Program
     {
+        public enum Card { Шестерка, Семерка, Восьмерка, Девятка, Десятка, Валет, Дама, Король, Туз};   //для Task4
         static void Main(string[] args)
         {
-            //Task 1
+            /*//Task 1
             Console.WriteLine("Task 1\nВведите трехзначное число:");
         Input:
             int digit3 = Convert.ToInt32(Console.ReadLine());
@@ -64,9 +65,24 @@ namespace Classwork
                 default:
                     Console.WriteLine("Некорректное значение");
                     break;
-            }
+            }*/
             //Task 4
-            //Task 5
+            try
+            {
+                Console.WriteLine("\nTask 4\nВведите число от 6 до 14:");
+                int k = Convert.ToInt32(Console.ReadLine());
+                if (k <6 || k > 14)
+                {
+                    Console.WriteLine("Нет такой карты");
+                }
+                else
+                    Console.WriteLine((Card)k-6);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ошибка " + ex.Message);
+            }
+            /*//Task 5
             Console.WriteLine("\nTask 5");
             int R = 6370;
             for (int h = 1; h<=10; h++)
@@ -80,8 +96,26 @@ namespace Classwork
             for (int i=1;i<10;i++)
             {
                 Console.WriteLine("{0} * {1} = {2}",n,i,n*i);
-            }
+            }*/
             //Task 7
+            try
+            {
+                Console.WriteLine("\nTask 7\nВведите первое число последовательности");
+                int num = Convert.ToInt32(Console.ReadLine()), count = 0, sum=0;
+                while (num >= 0)
+                {
+                    count++;
+                    sum += num;
+                    Console.WriteLine("Введите следующее число");
+                    num = Convert.ToInt32(Console.ReadLine());
+
+                }
+                Console.WriteLine($"Среднее арифметическое: {(double)sum/count}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка"+ex.Message);
+            }
             //TAsk 8
 
             Console.ReadKey();
