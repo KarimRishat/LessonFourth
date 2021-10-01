@@ -73,14 +73,14 @@ namespace Classwork
                 int k = Convert.ToInt32(Console.ReadLine());
                 if (k <6 || k > 14)
                 {
-                    Console.WriteLine("Нет такой карты");
+                    throw new Exception("Нет такой карты!");
                 }
                 else
                     Console.WriteLine((Card)k-6);
             }
             catch(Exception ex)
             {
-                Console.WriteLine("Ошибка " + ex.Message);
+                Console.WriteLine("Ошибка "+ex.Message);
             }
             //Task 5
             Console.WriteLine("\nTask 5");
@@ -134,18 +134,19 @@ namespace Classwork
                 }
             }
             //Task 9
-            Console.WriteLine("\nTask 9\nВведите первое число последовательности, признак окончание последовательности — 0");
-            int num = Convert.ToInt32(Console.ReadLine()), count = 1, sum = 0;
-            while (num != 0)
+            Console.WriteLine("\nTask 9\nВведите последовательность");
+            int num, count = 0, sum = 0;
+            do
             {
-                if(count % 3 == 0)
-                {
-                    sum += num;
-                }
-                Console.WriteLine("Введите следующее число");
+                Console.WriteLine("Введите число");
                 num = Convert.ToInt32(Console.ReadLine());
                 count++;
-            }
+                if (count % 3 != 0)
+                {
+                    continue;
+                }
+                sum += num;
+            } while (num != 0);
             Console.WriteLine("Сумма элементов последовательности, номера позиций которых кратны 3: {0}",sum);
             //Task 10
             Console.WriteLine("\nTask 10\nВведите первое число последовательности, признак окончание последовательности — 0");
